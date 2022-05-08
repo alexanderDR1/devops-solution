@@ -1,83 +1,37 @@
 ### namespace variables for app1
-
-variable "app1_name" {
-  type        = string
-  description = "exposed app name"
-  default     = "stream-frontend"
-}
-
-variable "app1_labels" {
-  type        = map(string)
-  description = "labels for namespace app1"
-  default = {
-    "name"  = "stream-frontend"
-    "tier"  = "web"
-    "owner" = "product"
-  }
-}
-
-variable "app1_annotations" {
-  type        = map(string)
-  description = "annotations for namespace app1"
-  default = {
-    "serviceClass"       = "web-frontend"
-    "loadBalancer/class" = "external"
-  }
-}
+variable "app1"{                          ###reduce variable count (1)
+  type = map(string)
+  description = "app name and lable and annotations here"
+  defualt = {
+	"name" = "stream-frontend"
+	"tier" = "web"
+	"owner" = "product"
+	"serviceClass" = "web-frontend"
+    	"loadBalancer/class" = "external" 
 
 ### namespace variables for app2
 
-variable "app2_name" {
-  type        = string
-  description = "exposed app name"
-  default     = "stream-backend"
-}
-
-variable "app2_labels" {
-  type        = map(string)
-  description = "labels for namespace app2"
-  default = {
-    "name"  = "stream-backend"
-    "tier"  = "api"
-    "owner" = "product"
-  }
-}
-
-variable "app2_annotations" {
-  type        = map(string)
-  description = "annotations for namespace app2"
-  default = {
-    "serviceClass"       = "web-backend"
-    "loadBalancer/class" = "internal"
-  }
-}
+variable "app2"{
+  type = map(string)
+  description = "app name and lable and annotations here"
+  defualt = {
+	"name" = "stream-backend"
+	"tier" = "api"
+	"owner" = "product"
+	"serviceClass"       = "web-backend"
+    	"loadBalancer/class" = "internal" 
 
 ### namespace variables for app3
 
-variable "app3_name" {
-  type        = string
-  description = "exposed app name"
-  default     = "stream-database"
-}
-
-variable "app3_labels" {
-  type        = map(string)
-  description = "labels for namespace app3"
-  default = {
-    "name"  = "stream-database"
-    "tier"  = "shared"
-    "owner" = "product"
-  }
-}
-
-variable "app3_annotations" {
-  type        = map(string)
-  description = "annotations for namespace app3"
-  default = {
-    "serviceClass"       = "database"
-    "loadBalancer/class" = "disabled"
-  }
-}
+variable "app3"{
+  type = map(string)
+  description = "app name and lable and annotations here"
+  defualt = {
+	"name" = "stream-database"
+	"tier" = "shared"
+	"owner" = "product"
+	"serviceClass"       = "database"
+    	"loadBalancer/class" = "disabled" 
 
 variable "acl_frontend" {
   description = "access allowed from this source"
