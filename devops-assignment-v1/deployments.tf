@@ -73,6 +73,14 @@ resource "kubernetes_deployment" "app2" {
         container {
           name  = var.app2_name
           image = "nginx"
+          imagePullPolicy: Always   ### autoscale (5)
+          resources:          ### manage resources for pods (4)
+          requests:
+            memory: "50Mi"
+            cpu: "500m"
+          limits:
+            memory: "500Mi"
+            cpu: "2000m"
         }
       }
     }
@@ -107,6 +115,14 @@ resource "kubernetes_deployment" "app3" {
         container {
           name  = var.app3_name
           image = "mongo"
+          imagePullPolicy: Always   ### autoscale (5)
+          resources:          ### manage resources for pods (4)
+          requests:
+            memory: "50Mi"
+            cpu: "500m"
+          limits:
+            memory: "500Mi"
+            cpu: "2000m"
         }
       }
     }
