@@ -31,6 +31,14 @@ resource "kubernetes_deployment" "app1" {
         container {
           name  = var.app1_name
           image = "nginx"
+          imagePullPolicy: Always   ### autoscale (5)
+          resources:          ### manage resources for pods (4)
+          requests:
+            memory: "50Mi"
+            cpu: "500m"
+          limits:
+            memory: "500Mi"
+            cpu: "2000m"
         }
       }
     }
