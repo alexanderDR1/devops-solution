@@ -1,3 +1,14 @@
+variable “workspace_to_environment_map” {     ###multi-environment (6)
+  type = map(string)
+  default = {
+    dev     = “dev”
+    qa      = “qa”
+    staging = “staging”
+    production    = “production”
+  }
+}
+
+
 ### namespace variables for app1
 variable "app1"{                          ###reduce variable count (1)
   type = map(string)
