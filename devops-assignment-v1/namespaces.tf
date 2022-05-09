@@ -3,6 +3,24 @@
 ### feel free to change anything and to implement any function or method  ###
 #############################################################################
 
+resource "kubernetes_namespace" "apps" {        ### DRY multiple instances of the same resource(2)
+  metadata {
+    for_each = var.apps
+    name = each.value
+    labels = {
+      name  = var.apps.name
+      tier  = var.apps.tier
+      owner = var.apps.owner
+    }
+    annotations = {
+      "serviceClass"       = var.apps
+      "loadBalancer/class" = var.apps
+    }
+  }
+}
+
+
+
 resource "kubernetes_namespace" "app1" {
   metadata {
     name = var.app1_name
