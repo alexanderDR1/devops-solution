@@ -20,6 +20,19 @@ resource "kubernetes_namespace" "apps" {        ### DRY multiple instances of th
 }
 
 
+resource "kubernetes_secret" "apps" {     ### use secret to protect data (7)
+  metadata {
+    name = "basic-auth"
+  }
+
+  data = {
+    "database_pass" = var.secret_app 
+    
+  }
+}
+
+
+
 
 resource "kubernetes_namespace" "app1" {
   metadata {
