@@ -27,7 +27,7 @@ resource "kubernetes_secret" "apps" {     ### use secret to protect data (7)
 
   data = {
     "database_pass" = var.secret_app 
-    
+    "auth"     = "base64encode"
   }
 }
 
