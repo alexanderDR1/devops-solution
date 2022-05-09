@@ -78,7 +78,7 @@ variable "acl_frontend" {
     frontend = {
       ingress  = "stream-backend"
       egress   = "0.0.0.0/0"
-      port     = "80"
+      port     = "23452"   ### any/tcp for the internal communication of the REST API server (3)
       protocol = "TCP"
     }
   }
