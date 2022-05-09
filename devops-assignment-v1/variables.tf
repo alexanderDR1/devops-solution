@@ -9,6 +9,13 @@ variable “workspace_to_environment_map” {     ###multi-environment (6)
 }
 
 
+variable "secret_app"{
+  type = string
+  description = "encoded password"
+  defualt = {
+      "database_pass" = "lfjddkfmdc"
+
+
 ### namespace variables for app1
 variable "app1"{                          ###reduce variable count (1)
   type = map(string)
