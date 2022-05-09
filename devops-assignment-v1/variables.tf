@@ -9,9 +9,10 @@ variable “workspace_to_environment_map” {     ###multi-environment (6)
 }
 
 
-variable "secret_app"{
+variable "secret_app"{      ###protect sensetive data(7)
   type = string
   description = "encoded password"
+  sensetive = true	
   defualt = {
       "database_pass" = "lfjddkfmdc"
 
