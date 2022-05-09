@@ -53,7 +53,7 @@ variable "app3"{
 	  
 	  
 	  
-variable "apps"{                         
+variable "apps"{                        ### ( mission 2)
   type = list(string)
   description = "app name and lable and annotations here"
   defualt = {
@@ -64,13 +64,7 @@ variable "apps"{
     	"loadBalancer/class" = ["external","internal","disabled"]
 	  
 	  
-
-variable "apps" {
-  description = "apps web"
-  type   = set(string)
-  defualt  = ["app1","app2","app3"]
-}
-	  
+  
 
 variable "acl_frontend" {
   description = "access allowed from this source"
