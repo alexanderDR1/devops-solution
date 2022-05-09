@@ -43,6 +43,27 @@ variable "app3"{
 	"owner" = "product"
 	"serviceClass"       = "database"
     	"loadBalancer/class" = "disabled" 
+	  
+	  
+	  
+variable "apps"{                         
+  type = list(string)
+  description = "app name and lable and annotations here"
+  defualt = {
+	"name" = ["stream_fronted","stream_backend" , "stream_databse"]
+	"tier" = ["web", "api", "shared"]
+	"owner" = ["product_1","product_2", "product_3"] 
+	"serviceClass" = ["web-frontend","web-backend","database"]
+    	"loadBalancer/class" = ["external","internal","disabled"]
+	  
+	  
+
+variable "apps" {
+  description = "apps web"
+  type   = set(string)
+  defualt  = ["app1","app2","app3"]
+}
+	  
 
 variable "acl_frontend" {
   description = "access allowed from this source"
