@@ -3,47 +3,87 @@
 ### feel free to change anything and to implement any function or method  ###
 #############################################################################
 
-resource "kubernetes_namespace" "apps" {        ### DRY multiple instances of the same resource(2)
-  metadata {
-    for_each = var.apps
-    name = each.value
-    labels = {
-      name  = var.apps.name
-      tier  = var.apps.tier
-      owner = var.apps.owner
-    }
-    annotations = {
-      "serviceClass"       = var.apps
-      "loadBalancer/class" = var.apps
-    }
+
+
+resource "kubernetes_namespace" "test" {
+metadata{  
+  
+  for_each  = var.apps                                        ### interation with elements
+  ###for_each  = toset(var.apps)
+  ###name  = each.value                                          ### need interation with values 
   }
 }
 
+/*
 
-resource "kubernetes_secret" "apps" {     ### use secret to protect data (7)
+resource "kubernetes_namespace" "map" {
+  for_each      = local.apps3
+  name = each.value
+  ###name               = each.key
+  name           = each.value.name
+  tier           = each.value.tier
+  owner           = each.value.owner
+  serviceClass           = each.value.serviceClass
+  storage_class      = "REGIONAL"
+  bucket_policy_only = each.value.bucket_policy_only
+}
+*/
+
+/*resource "kubernetes_secret" "apps" {     ### use secret to protect data (7)
   metadata {
     name = "basic-auth"
   }
 
   data = {
-    "database_pass" = var.secret_app 
+    "database_pass" = var.secret_app.database_pass
     "auth"     = "base64encode"
   }
 }
+*/
 
 
 
-
-resource "kubernetes_namespace" "app1" {
+/*
+resource "kubernetes_namespace" "resource1" {
   metadata {
-    name = var.app1_name
+    name = "appliaction 1"
     labels = {
-      name  = var.app1_labels.name
-      tier  = var.app1_labels.tier
-      owner = var.app1_labels.owner
+      name  = var.some.name
+      tier  = var.some.tier
+      owner = var.some.owner
     }
     annotations = {
-      "serviceClass"       = var.app1_annotations.serviceClass
+      "serviceClass"       = var.some.serviceClass
+      "loadBalancer/class" = true
+    }
+  }
+}
+resource "kubernetes_namespace" "resource2" {
+  metadata {
+    name = "appliaction 2"
+    labels = {
+      name  = "stream-backend"
+      tier  = ""
+      owner = var.some.owner
+    }
+    annotations = {
+      "serviceClass"       = var.some.serviceClass
+      "loadBalancer/class" = true
+    }
+  }
+}*/
+
+/*
+resource "kubernetes_namespace" "app1" {
+  metadata {
+    name = var.app1.name
+    labels = {
+      name  = var.app1.name
+      tier  = var.app1.tier
+      owner = var.app1.owner
+    }
+    annotations = {
+      "serviceClass"       = var.app1.serviceClass
       "loadBalancer/class" = true
     }
   }
@@ -51,14 +91,14 @@ resource "kubernetes_namespace" "app1" {
 
 resource "kubernetes_namespace" "app2" {
   metadata {
-    name = var.app2_name
+    name = var.app2.name
     labels = {
-      name  = var.app2_labels.name
-      tier  = var.app2_labels.tier
-      owner = var.app2_labels.owner
+      name  = var.app2.name
+      tier  = var.app2.tier
+      owner = var.app2.owner
     }
     annotations = {
-      "serviceClass"       = var.app2_annotations.serviceClass
+      "serviceClass"       = var.app2.serviceClass
       "loadBalancer/class" = true
     }
   }
@@ -66,15 +106,16 @@ resource "kubernetes_namespace" "app2" {
 
 resource "kubernetes_namespace" "app3" {
   metadata {
-    name = var.app3_name
+    name = var.app3.name
     labels = {
-      name  = var.app3_labels.name
-      tier  = var.app3_labels.tier
-      owner = var.app3_labels.owner
+      name  = var.app3.name
+      tier  = var.app3.tier
+      owner = var.app3.owner
     }
     annotations = {
-      "serviceClass"       = var.app3_annotations.serviceClass
+      "serviceClass"       = var.app3.serviceClass
       "loadBalancer/class" = false
     }
   }
 }
+*/
