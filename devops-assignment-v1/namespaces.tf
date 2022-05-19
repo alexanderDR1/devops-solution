@@ -8,7 +8,8 @@
 resource "kubernetes_namespace" "test" {
 metadata{  
   
-  for_each  = var.apps                                        ### interation with elements
+  for_each  = var.apps    ### interation with elements
+ ### for_each = {for i, val in local.apps3: i => val}
   ###for_each  = toset(var.apps)
   ###name  = each.value                                          ### need interation with values 
   }
