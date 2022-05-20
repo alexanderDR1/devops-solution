@@ -43,10 +43,6 @@ resource "kubernetes_namespace" "map" {
 */
 
 
-
-
-
-/*
 resource "kubernetes_namespace" "app1" {
   metadata {
     name = var.app1.name
@@ -91,4 +87,4 @@ resource "kubernetes_namespace" "app3" {
     }
   }
 }
-*/
+
