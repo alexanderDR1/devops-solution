@@ -44,35 +44,7 @@ resource "kubernetes_namespace" "map" {
 
 
 
-/*
-resource "kubernetes_namespace" "resource1" {
-  metadata {
-    name = "appliaction 1"
-    labels = {
-      name  = var.some.name
-      tier  = var.some.tier
-      owner = var.some.owner
-    }
-    annotations = {
-      "serviceClass"       = var.some.serviceClass
-      "loadBalancer/class" = true
-    }
-  }
-}
-resource "kubernetes_namespace" "resource2" {
-  metadata {
-    name = "appliaction 2"
-    labels = {
-      name  = "stream-backend"
-      tier  = ""
-      owner = var.some.owner
-    }
-    annotations = {
-      "serviceClass"       = var.some.serviceClass
-      "loadBalancer/class" = true
-    }
-  }
-}*/
+
 
 /*
 resource "kubernetes_namespace" "app1" {
